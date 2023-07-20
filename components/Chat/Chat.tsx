@@ -6,6 +6,7 @@ import { ChatMessage } from "./ChatMessage";
 import { ModelSelect } from "./ModelSelect";
 import { Regenerate } from "./Regenerate";
 import { SystemPrompt } from "./SystemPrompt";
+import { Temperature } from "./Temperature";
 
 interface Props {
   conversation: Conversation;
@@ -56,11 +57,11 @@ export const Chat: FC<Props> = ({ conversation, models, messageIsStreaming, mode
                         models={models}
                         onModelChange={(model) => onUpdateConversation(conversation, { key: "model", value: model })}
                       />
-
                       <SystemPrompt
                         conversation={conversation}
                         onChangePrompt={(prompt) => onUpdateConversation(conversation, { key: "prompt", value: prompt })}
                       />
+                      <Temperature onChangeTemp={(temp) => onUpdateConversation(conversation, { key: "temperature", value: temp })} />
                     </div>
                   )}
                 </div>

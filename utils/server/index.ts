@@ -1,7 +1,7 @@
 import { Message, OpenAIModel } from "@/types";
 import { createParser, ParsedEvent, ReconnectInterval } from "eventsource-parser";
 
-export const OpenAIStream = async (model: OpenAIModel, systemPrompt: string, key: string, messages: Message[]) => {
+export const OpenAIStream = async (model: OpenAIModel, systemPrompt: string, key: string, messages: Message[], temperature: number) => {
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     headers: {
       "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export const OpenAIStream = async (model: OpenAIModel, systemPrompt: string, key
   });
 
   if (res.status !== 200) {
-    const statusText = res.statusText; 
+    const statusText = res.statusText;
     throw new Error(`OpenAI API returned an error: ${statusText}`);
   }
 
