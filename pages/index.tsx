@@ -51,7 +51,8 @@ export default function Home() {
         model: updatedConversation.model,
         messages: updatedConversation.messages,
         key: apiKey,
-        prompt: updatedConversation.prompt
+        prompt: updatedConversation.prompt,
+        temperature: updatedConversation.temperature
       };
 
       const controller = new AbortController();
@@ -186,7 +187,7 @@ export default function Home() {
       setModelError(true);
       return;
     }
-
+console.info('------> ', data);
     setModels(data);
     setModelError(false);
   };
@@ -224,7 +225,8 @@ export default function Home() {
       name: `Conversation ${lastConversation ? lastConversation.id + 1 : 1}`,
       messages: [],
       model: OpenAIModels[OpenAIModelID.GPT_3_5],
-      prompt: DEFAULT_SYSTEM_PROMPT
+      prompt: DEFAULT_SYSTEM_PROMPT,
+      temperature: 0.7,
     };
 
     const updatedConversations = [...conversations, newConversation];
@@ -252,7 +254,8 @@ export default function Home() {
         name: "New conversation",
         messages: [],
         model: OpenAIModels[OpenAIModelID.GPT_3_5],
-        prompt: DEFAULT_SYSTEM_PROMPT
+        prompt: DEFAULT_SYSTEM_PROMPT,
+        temperature: 0.7,
       });
       localStorage.removeItem("selectedConversation");
     }
@@ -279,7 +282,8 @@ export default function Home() {
       name: "New conversation",
       messages: [],
       model: OpenAIModels[OpenAIModelID.GPT_3_5],
-      prompt: DEFAULT_SYSTEM_PROMPT
+      prompt: DEFAULT_SYSTEM_PROMPT,
+      temperature: 0.7,
     });
     localStorage.removeItem("selectedConversation");
   };
@@ -327,7 +331,8 @@ export default function Home() {
         name: "New conversation",
         messages: [],
         model: OpenAIModels[OpenAIModelID.GPT_3_5],
-        prompt: DEFAULT_SYSTEM_PROMPT
+        prompt: DEFAULT_SYSTEM_PROMPT,
+        temperature: 0.7,
       });
     }
 
