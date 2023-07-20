@@ -129,7 +129,7 @@ export const ChatInput: FC<Props> = ({ onSend, messageIsStreaming, model, stopCo
         >
           ChatBot UI
         </a>
-        . Chatbot UI is an advanced chatbot kit for OpenAI&apos;s chat models aiming to mimic ChatGPT&apos;s interface and functionality.
+        . Chatbot UI is an advanced chatbot kit for OpenAI&apos;s chat models aiming to mimic ChatGPT&apos;s interface and functionality
       </div>
     </div>
   );
