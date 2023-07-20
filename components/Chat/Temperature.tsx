@@ -11,14 +11,12 @@ export const Temperature: FC<Props> = ({onChangeTemp}) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         let value = e.target.value;
-        if (value.length > 0) {
-            const valueNum = parseFloat(value);
-            if (!isNaN(valueNum)) {
-                onChangeTemp(valueNum)
-            } else {
-                onChangeTemp(0.7)
-                alert(`Temperature must be a number, range from 0.0 to 2.0`);
-            }
+        const valueNum = parseFloat(value);
+        if (!isNaN(valueNum)) {
+            onChangeTemp(valueNum)
+        } else {
+            onChangeTemp(0.7)
+            alert(`Temperature must be a number, range from 0.0 to 2.0`);
         }
         setValue(value);
     };

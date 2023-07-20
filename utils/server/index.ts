@@ -18,10 +18,12 @@ export const OpenAIStream = async (model: OpenAIModel, systemPrompt: string, key
         ...messages
       ],
       max_tokens: 1000,
-      temperature: 0.0,
+      temperature: temperature,
       stream: true
     })
   });
+
+  console.info('-------> temperature ', temperature);
 
   if (res.status !== 200) {
     const statusText = res.statusText;
