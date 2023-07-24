@@ -12,13 +12,12 @@ export const Temperature: FC<Props> = ({onChangeTemp}) => {
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         let value = e.target.value;
         const valueNum = parseFloat(value);
+        let temp = 0.7;
         if (!isNaN(valueNum)) {
-            onChangeTemp(valueNum)
-        } else {
-            onChangeTemp(0.7)
-            alert(`Temperature must be a number, range from 0.0 to 2.0`);
+            temp = valueNum > 2 ? 2.0 : (valueNum < 0 ? 0 : valueNum);
         }
-        setValue(value);
+        onChangeTemp(temp)
+        setValue(value)
     };
 
     useEffect(() => {
@@ -32,9 +31,10 @@ export const Temperature: FC<Props> = ({onChangeTemp}) => {
     return (
         <div className="flex flex-col">
             <label className="text-left dark:text-neutral-400 text-neutral-700 mb-2">Temperature</label>
-            <label className="text-left dark:text-neutral-400 text-neutral-700 mb-2">A higher value (e.g. 0.9) will make
-                the output more random, while a lower value (e.g. 0.1) will make the output more focused and more
-                deterministic.</label>
+            <label className="text-left dark:text-neutral-400 text-neutral-700 mb-2">What sampling temperature to use,
+                between 0.0 and 2.0. Higher values like 0.8 will make the output more random, while lower values like
+                0.2
+                will make it more focused and deterministic.</label>
             <textarea
                 ref={textareaRef}
                 className="w-full rounded-lg px-4 py-2 focus:outline-none dark:bg-[#40414F] dark:border-opacity-50 dark:border-neutral-800 dark:text-neutral-100 border border-neutral-500 shadow text-neutral-900"

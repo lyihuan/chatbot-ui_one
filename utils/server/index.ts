@@ -23,7 +23,7 @@ export const OpenAIStream = async (model: OpenAIModel, systemPrompt: string, key
     })
   });
 
-  console.info('-------> temperature ', temperature);
+  console.info('-------> temperature ', temperature, [...messages]);
 
   if (res.status !== 200) {
     const statusText = res.statusText;
