@@ -64,7 +64,7 @@ export default function Home() {
         signal: controller.signal,
         body: JSON.stringify(chatBody)
       });
-
+      console.info('send request : \n', JSON.stringify({...chatBody, key:''}));
       if (!response.ok) {
         setLoading(false);
         setMessageIsStreaming(false);
